@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /index
+AES_KEY = Mb2WtnT8tKowN8KeynCvfRjy0kJbUah0WzoNx5XaZbvu8Fi
