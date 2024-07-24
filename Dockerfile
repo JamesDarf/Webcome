@@ -18,6 +18,14 @@ RUN pip install --no-cache-dir -r requirements.txt
 # 로그 디렉토리 생성
 RUN mkdir logs
 
+# 일반 유저로 실행
+RUN apt-get update
+RUN apt-get install -y git
+RUN groupadd -g 999 appuser
+RUN useradd -r -u 999 -g appuser appuser
+
+USER appuser
+
 # 포트 노출
 EXPOSE $port
 
