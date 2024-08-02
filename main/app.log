@@ -1,0 +1,1660 @@
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:14:50] "GET /check_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:14:50] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:14:50] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:14:50] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:17:47] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:17:47] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:17:47] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:17:47] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:17:47] "[33mGET /static/js/bootstrap.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:17:47] "[33mGET /static/js/jquery.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:19:35] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:19:35] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:19:35] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:19:35] "[33mGET /static/js/jquery.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:19:35] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:19:35] "[33mGET /static/js/bootstrap.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:19:38] "GET /create_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:19:47] "POST /create_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:19:51] "GET /check_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:19:51] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:19:51] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:19:51] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+ERROR:app:Exception on /check_session [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 40, in check_session
+    info = pickle.loads(base64.b64decode(session)) # 문자열을 바이트로 디코딩하고 이걸 역직렬화하여 원래 데이터로 변환.(이때 취약점 발생)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Incorrect padding
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:19:53] "[35m[1mPOST /check_session HTTP/1.1[0m" 500 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:19:59] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:19:59] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+DEBUG:root:아이피 172.18.0.1가 check_session을 시도함. {'name': 'guest', 'userid': 'guest', 'password': 'guest'}
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:20:09] "POST /check_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:20:10] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:20:10] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:20:10] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+ERROR:app:Exception on /check_session [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 55, in check_session
+    info = pickle.loads(decrypt(base64.b64decode(session))) # 문자열을 바이트로 디코딩하고 이걸 역직렬화하여 원래 데이터로 변환.(이때 취약점 발생)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 25, in decrypt
+    cipher = AES.new(AES_KEY, AES.MODE_ECB)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/AES.py", line 228, in new
+    return _create_cipher(sys.modules[__name__], key, mode, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/__init__.py", line 79, in _create_cipher
+    return modes[mode](factory, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/_mode_ecb.py", line 216, in _create_ecb_cipher
+    cipher_state = factory._create_base_cipher(kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/AES.py", line 100, in _create_base_cipher
+    result = start_operation(c_uint8_ptr(key),
+                             ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Util/_raw_api.py", line 248, in c_uint8_ptr
+    raise TypeError("Object type %s cannot be passed to C code" % type(data))
+TypeError: Object type <class 'str'> cannot be passed to C code
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:34:29] "[35m[1mPOST /check_session HTTP/1.1[0m" 500 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:34:34] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:34:34] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:34:34] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:34:34] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:34:34] "[33mGET /static/js/jquery.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:34:34] "[33mGET /static/js/bootstrap.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:34:36] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:34:36] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:34:36] "[33mGET /static/js/bootstrap.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:34:36] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:34:36] "[33mGET /static/js/jquery.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:34:36] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:34:37] "GET /create_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:34:40] "GET /check_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:34:40] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:34:40] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:34:40] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+ERROR:app:Exception on /check_session [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 55, in check_session
+    info = pickle.loads(decrypt(base64.b64decode(session))) # 문자열을 바이트로 디코딩하고 이걸 역직렬화하여 원래 데이터로 변환.(이때 취약점 발생)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 25, in decrypt
+    cipher = AES.new(AES_KEY, AES.MODE_ECB)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/AES.py", line 228, in new
+    return _create_cipher(sys.modules[__name__], key, mode, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/__init__.py", line 79, in _create_cipher
+    return modes[mode](factory, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/_mode_ecb.py", line 216, in _create_ecb_cipher
+    cipher_state = factory._create_base_cipher(kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/AES.py", line 100, in _create_base_cipher
+    result = start_operation(c_uint8_ptr(key),
+                             ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Util/_raw_api.py", line 248, in c_uint8_ptr
+    raise TypeError("Object type %s cannot be passed to C code" % type(data))
+TypeError: Object type <class 'str'> cannot be passed to C code
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:34:46] "[35m[1mPOST /check_session HTTP/1.1[0m" 500 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:34:49] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+ERROR:app:Exception on /check_session [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 55, in check_session
+    info = pickle.loads(decrypt(base64.b64decode(session))) # 문자열을 바이트로 디코딩하고 이걸 역직렬화하여 원래 데이터로 변환.(이때 취약점 발생)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 25, in decrypt
+    cipher = AES.new(AES_KEY, AES.MODE_ECB)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/AES.py", line 228, in new
+    return _create_cipher(sys.modules[__name__], key, mode, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/__init__.py", line 79, in _create_cipher
+    return modes[mode](factory, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/_mode_ecb.py", line 216, in _create_ecb_cipher
+    cipher_state = factory._create_base_cipher(kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/AES.py", line 100, in _create_base_cipher
+    result = start_operation(c_uint8_ptr(key),
+                             ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Util/_raw_api.py", line 248, in c_uint8_ptr
+    raise TypeError("Object type %s cannot be passed to C code" % type(data))
+TypeError: Object type <class 'str'> cannot be passed to C code
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:35:09] "[35m[1mPOST /check_session HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /check_session [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 55, in check_session
+    info = pickle.loads(decrypt(base64.b64decode(session))) # 문자열을 바이트로 디코딩하고 이걸 역직렬화하여 원래 데이터로 변환.(이때 취약점 발생)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 25, in decrypt
+    cipher = AES.new(AES_KEY, AES.MODE_ECB)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/AES.py", line 228, in new
+    return _create_cipher(sys.modules[__name__], key, mode, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/__init__.py", line 79, in _create_cipher
+    return modes[mode](factory, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/_mode_ecb.py", line 216, in _create_ecb_cipher
+    cipher_state = factory._create_base_cipher(kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/AES.py", line 100, in _create_base_cipher
+    result = start_operation(c_uint8_ptr(key),
+                             ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Util/_raw_api.py", line 248, in c_uint8_ptr
+    raise TypeError("Object type %s cannot be passed to C code" % type(data))
+TypeError: Object type <class 'str'> cannot be passed to C code
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:35:11] "[35m[1mPOST /check_session HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /check_session [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 55, in check_session
+    info = pickle.loads(decrypt(base64.b64decode(session))) # 문자열을 바이트로 디코딩하고 이걸 역직렬화하여 원래 데이터로 변환.(이때 취약점 발생)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 25, in decrypt
+    cipher = AES.new(AES_KEY, AES.MODE_ECB)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/AES.py", line 228, in new
+    return _create_cipher(sys.modules[__name__], key, mode, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/__init__.py", line 79, in _create_cipher
+    return modes[mode](factory, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/_mode_ecb.py", line 216, in _create_ecb_cipher
+    cipher_state = factory._create_base_cipher(kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/AES.py", line 100, in _create_base_cipher
+    result = start_operation(c_uint8_ptr(key),
+                             ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Util/_raw_api.py", line 248, in c_uint8_ptr
+    raise TypeError("Object type %s cannot be passed to C code" % type(data))
+TypeError: Object type <class 'str'> cannot be passed to C code
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:35:54] "[35m[1mPOST /check_session HTTP/1.1[0m" 500 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:35:57] "GET /check_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:35:57] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:35:57] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:35:57] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:35:59] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:35:59] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:35:59] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:35:59] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:35:59] "[33mGET /static/js/jquery.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:35:59] "[33mGET /static/js/bootstrap.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:35:59] "GET /create_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:36:07] "POST /create_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:36:11] "GET /check_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:36:11] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:36:11] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:36:11] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+ERROR:app:Exception on /check_session [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 55, in check_session
+    info = pickle.loads(decrypt(base64.b64decode(session))) # 문자열을 바이트로 디코딩하고 이걸 역직렬화하여 원래 데이터로 변환.(이때 취약점 발생)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 25, in decrypt
+    cipher = AES.new(AES_KEY, AES.MODE_ECB)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/AES.py", line 228, in new
+    return _create_cipher(sys.modules[__name__], key, mode, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/__init__.py", line 79, in _create_cipher
+    return modes[mode](factory, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/_mode_ecb.py", line 216, in _create_ecb_cipher
+    cipher_state = factory._create_base_cipher(kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Cipher/AES.py", line 100, in _create_base_cipher
+    result = start_operation(c_uint8_ptr(key),
+                             ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/Crypto/Util/_raw_api.py", line 248, in c_uint8_ptr
+    raise TypeError("Object type %s cannot be passed to C code" % type(data))
+TypeError: Object type <class 'str'> cannot be passed to C code
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:36:13] "[35m[1mPOST /check_session HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:40:20] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:40:20] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:40:20] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:40:20] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:40:20] "[33mGET /static/js/jquery.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:40:20] "[33mGET /static/js/bootstrap.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:40:23] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:40:23] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:40:23] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:40:23] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:40:23] "[33mGET /static/js/jquery.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:40:23] "[33mGET /static/js/bootstrap.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:40:24] "GET /create_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:40:32] "POST /create_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:41:20] "GET /check_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:41:20] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:41:20] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:41:20] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+DEBUG:root:아이피 172.18.0.1가 check_session을 시도함. {'name': 'guest', 'userid': 'guest', 'password': 'guest'}
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:41:22] "POST /check_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:41:22] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:41:22] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:41:22] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+DEBUG:root:아이피 172.18.0.1가 check_session을 시도함. {'name': 'YISF{webCOme_T0_7He_h4CK1ng_wEbCOM3}', 'userid': 'modori205', 'password': '123456'}
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:41:53] "POST /check_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:41:53] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:41:53] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:41:53] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:42:45] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:42:44] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:42:44] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:42:44] "[33mGET /static/js/jquery.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:42:44] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:42:44] "[33mGET /static/js/bootstrap.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:42:47] "GET /create_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:42:51] "POST /create_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:42:55] "GET /check_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:42:55] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:42:55] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:42:55] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+DEBUG:root:아이피 172.18.0.1가 check_session을 시도함. {'name': 'guest', 'userid': 'guest', 'password': 'guest'}
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:43:05] "POST /check_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:43:05] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:43:05] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:43:05] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:46:01] "GET /check_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:46:01] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:46:01] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:46:01] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+DEBUG:root:아이피 172.18.0.1가 check_session을 시도함. {'name': 'YISF{webCOme_T0_7He_h4CK1ng_wEbCOM3}', 'userid': 'modori205', 'password': '123456'}
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:46:03] "POST /check_session HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:46:03] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:46:03] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [26/Jul/2024 14:46:03] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 03:58:57] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 03:58:57] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 03:58:57] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 03:58:57] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 03:58:57] "[33mGET /static/js/bootstrap.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 03:58:57] "[33mGET /static/js/jquery.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 04:00:25] "[33mGET /create_session HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 04:00:26] "[33mGET /create_session HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 04:00:27] "[33mGET /create_session HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 04:00:27] "[33mGET /create_session HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 04:01:38] "[33mGET /create_session HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 04:01:38] "[33mGET /create_session HTTP/1.1[0m" 404 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 04:02:57] "[33mGET /create_session HTTP/1.1[0m" 404 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 05:18:44] "[33mGET /create_session HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 05:18:48] "[33mGET /create_ㅍsession HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 05:18:52] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 05:18:53] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 05:18:54] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 05:18:54] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 05:18:54] "[33mGET /static/js/bootstrap.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 05:18:54] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 05:18:54] "[33mGET /static/js/jquery.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:09:30] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:09:30] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:09:30] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:09:30] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:09:30] "[33mGET /static/js/bootstrap.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:09:30] "[33mGET /static/js/jquery.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:17:33] "[33mGET /create_session HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:38:56] "[33mGET /check_session HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:39:03] "GET /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:39:03] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:39:03] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:39:03] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:39:56] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:40:01] "POST /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:40:43] "[33mGET /check_session HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:40:46] "[33mGET /check_session HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:40:50] "GET /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:40:50] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:40:50] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:40:50] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+DEBUG:root:아이피 172.18.0.1가 check_session을 시도함. {'name': 'guest', 'userid': 'guest', 'password': 'guest'}
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:40:52] "POST /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:40:52] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:40:52] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [30/Jul/2024 06:40:52] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 30, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 02:57:21] "[35m[1mGET / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 30, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 02:57:22] "[35m[1mGET / HTTP/1.1[0m" 500 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 02:58:01] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 02:59:20] "GET /create_vsession HTTP/1.1" 200 -
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 30, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/index.html", line 34, in top-level template code
+    {% extends "base.html" %}
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 02:59:23] "[35m[1mGET / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 30, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/index.html", line 34, in top-level template code
+    {% extends "base.html" %}
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 02:59:24] "[35m[1mGET / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 30, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/index.html", line 34, in top-level template code
+    {% extends "base.html" %}
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:00:20] "[35m[1mGET / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 30, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/index.html", line 34, in top-level template code
+    {% extends "base.html" %}
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:00:20] "[35m[1mGET / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 30, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/index.html", line 34, in top-level template code
+    {% extends "base.html" %}
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:00:20] "[35m[1mGET / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 30, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/index.html", line 34, in top-level template code
+    {% extends "base.html" %}
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:00:21] "[35m[1mGET / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 30, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/index.html", line 34, in top-level template code
+    {% extends "base.html" %}
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:00:21] "[35m[1mGET / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 30, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/index.html", line 34, in top-level template code
+    {% extends "base.html" %}
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:00:21] "[35m[1mGET / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 30, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/index.html", line 34, in top-level template code
+    {% extends "base.html" %}
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:00:22] "[35m[1mGET / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 30, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/index.html", line 34, in top-level template code
+    {% extends "base.html" %}
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:00:22] "[35m[1mGET / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 30, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/index.html", line 34, in top-level template code
+    {% extends "base.html" %}
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:00:24] "[35m[1mGET / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 30, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/index.html", line 34, in top-level template code
+    {% extends "base.html" %}
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:00:24] "[35m[1mGET / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 30, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/index.html", line 34, in top-level template code
+    {% extends "base.html" %}
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:00:25] "[35m[1mGET / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 30, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/index.html", line 34, in top-level template code
+    {% extends "base.html" %}
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:00:25] "[35m[1mGET / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 30, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/index.html", line 34, in top-level template code
+    {% extends "base.html" %}
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:00:25] "[35m[1mGET / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 30, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/index.html", line 34, in top-level template code
+    {% extends "base.html" %}
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:00:25] "[35m[1mGET / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 30, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/index.html", line 34, in top-level template code
+    {% extends "base.html" %}
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:00:25] "[35m[1mGET / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 30, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/index.html", line 34, in top-level template code
+    {% extends "base.html" %}
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:00:26] "[35m[1mGET / HTTP/1.1[0m" 500 -
+ERROR:app:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 30, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/index.html", line 34, in top-level template code
+    {% extends "base.html" %}
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:00:26] "[35m[1mGET / HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:01:15] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:01:15] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:01:15] "[33mGET /static/js/bootstrap.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:01:15] "[33mGET /static/js/jquery.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:01:15] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:01:15] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:01:15] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:01:15] "[33mGET /static/css/bootstrap-theme.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:01:15] "[33mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:01:15] "[33mGET /static/js/bootstrap.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:01:15] "[33mGET /static/css/non-responsive.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:01:15] "[33mGET /static/js/jquery.min.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:04:22] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:05:44] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:05:47] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:19:24] "GET / HTTP/1.1" 200 -
+ERROR:app:Exception on /create_vsession [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 35, in create_vsession
+    return render_template('create_vsession.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/create_vsession.html", line 57, in top-level template code
+    <!-- {% block content %} -->
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/templates/create_vsession.html", line 64, in block 'content'
+    {{ csrf_token() }}
+  File "/usr/local/lib/python3.12/site-packages/jinja2/utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'csrf_token' is undefined
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:19:27] "[35m[1mGET /create_vsession HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /check_vsession [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 51, in check_vsession
+    return render_template('check_vsession.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/check_vsession.html", line 57, in top-level template code
+    <!-- {% block content %} -->
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/templates/check_vsession.html", line 83, in block 'content'
+    {{ csrf_token() }}
+  File "/usr/local/lib/python3.12/site-packages/jinja2/utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'csrf_token' is undefined
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:19:31] "[35m[1mGET /check_vsession HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /create_vsession [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 35, in create_vsession
+    return render_template('create_vsession.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/create_vsession.html", line 57, in top-level template code
+    <!-- {% block content %} -->
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/templates/create_vsession.html", line 64, in block 'content'
+    {{ csrf_token() }}
+  File "/usr/local/lib/python3.12/site-packages/jinja2/utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'csrf_token' is undefined
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:20:15] "[35m[1mGET /create_vsession HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /check_vsession [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 51, in check_vsession
+    return render_template('check_vsession.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/check_vsession.html", line 57, in top-level template code
+    <!-- {% block content %} -->
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/templates/check_vsession.html", line 83, in block 'content'
+    {{ csrf_token() }}
+  File "/usr/local/lib/python3.12/site-packages/jinja2/utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'csrf_token' is undefined
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 03:20:16] "[35m[1mGET /check_vsession HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 04:12:16] "GET / HTTP/1.1" 200 -
+ERROR:app:Exception on /create_vsession [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 35, in create_vsession
+    return render_template('create_vsession.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/create_vsession.html", line 57, in top-level template code
+    <!-- {% block content %} -->
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/templates/create_vsession.html", line 64, in block 'content'
+    {{ csrf_token() }}
+  File "/usr/local/lib/python3.12/site-packages/jinja2/utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'csrf_token' is undefined
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 04:12:18] "[35m[1mGET /create_vsession HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /check_vsession [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 51, in check_vsession
+    return render_template('check_vsession.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/check_vsession.html", line 57, in top-level template code
+    <!-- {% block content %} -->
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/templates/check_vsession.html", line 83, in block 'content'
+    {{ csrf_token() }}
+  File "/usr/local/lib/python3.12/site-packages/jinja2/utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'csrf_token' is undefined
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 04:12:19] "[35m[1mGET /check_vsession HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /create_vsession [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 35, in create_vsession
+    return render_template('create_vsession.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/create_vsession.html", line 57, in top-level template code
+    <!-- {% block content %} -->
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/templates/create_vsession.html", line 64, in block 'content'
+    {{ csrf_token() }}
+  File "/usr/local/lib/python3.12/site-packages/jinja2/utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'csrf_token' is undefined
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 04:58:33] "[35m[1mGET /create_vsession HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 05:01:13] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 05:01:14] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 05:01:17] "GET /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 05:01:17] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 05:01:18] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 05:01:18] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 05:01:19] "GET /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 05:01:20] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 05:01:20] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 07:15:15] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 07:15:18] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 07:15:20] "GET /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [01/Aug/2024 07:15:21] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:21:24] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:21:33] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:21:35] "GET /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:21:36] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:21:37] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:22:05] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:22:05] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:33:46] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:33:48] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:33:49] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:34:01] "POST /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:34:05] "GET /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:34:05] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:34:06] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:34:07] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:34:19] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:38:05] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:38:10] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:38:16] "POST /create_vsession HTTP/1.1" 200 -
+ERROR:app:Exception on /check_vsession [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 51, in check_vsession
+    return render_template('check_vsession.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/check_vsession.html", line 57, in top-level template code
+    <!-- {% block content %} -->
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/templates/check_vsession.html", line 83, in block 'content'
+    {{ csrf_token() }}
+  File "/usr/local/lib/python3.12/site-packages/jinja2/utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'csrf_token' is undefined
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:38:19] "[35m[1mGET /check_vsession HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /check_vsession [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/./app.py", line 51, in check_vsession
+    return render_template('check_vsession.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/usr/src/app/templates/check_vsession.html", line 57, in top-level template code
+    <!-- {% block content %} -->
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/app/templates/check_vsession.html", line 83, in block 'content'
+    {{ csrf_token() }}
+  File "/usr/local/lib/python3.12/site-packages/jinja2/utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'csrf_token' is undefined
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:40:47] "[35m[1mGET /check_vsession HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:44:57] "POST /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:44:59] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:44:59] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:45:00] "GET /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:45:05] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:45:05] "GET /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:45:06] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:45:44] "POST /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:45:48] "GET /check_vsession HTTP/1.1" 200 -
+DEBUG:root:아이피 172.18.0.1가 check_session을 시도함. {'name': 'guest', 'userid': 'guest', 'password': 'guest'}
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:45:49] "POST /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:45:55] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:45:56] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:45:57] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:45:57] "GET /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:45:58] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:45:58] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:45:59] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 06:46:00] "GET /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 07:32:37] "POST /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 07:32:39] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 07:32:52] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [02/Aug/2024 07:33:03] "GET /check_vsession HTTP/1.1" 200 -
