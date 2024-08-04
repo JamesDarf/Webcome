@@ -1,8 +1,11 @@
-FROM python:3.12
+# Python slim 패키지 사용
+FROM python:slim
 
 # 환경 변수 설정
 ENV port 5000
 ENV LOG_FILE_PATH /usr/src/app/logs/app.log
+#한국 시간
+ENV TZ Asia/Seoul
 
 # 애플리케이션 디렉토리 생성 및 이동
 WORKDIR /usr/src/app
@@ -11,12 +14,15 @@ WORKDIR /usr/src/app
 COPY ./requirements.txt ./
 COPY ./main ./
 RUN apt-get update 
-RUN apt-get install build-essential -y
-RUN pip install pyproject.toml
+# RUN apt-get install build-essential -y
+# RUN pip install pyproject.toml
 RUN pip install --no-cache-dir -r requirements.txt
 
 # 로그 디렉토리 생성
 RUN mkdir logs
+
+# flag.txt 파일 444 권한 주기
+RUN chmod 444 /usr/src/app/flag.txt
 
 # 일반 유저로 실행
 RUN apt-get update
