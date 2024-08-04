@@ -1,5 +1,5 @@
 
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, make_response
 import os, pickle, base64
 import logging
 from Crypto.Cipher import AES
@@ -50,10 +50,15 @@ def check_vsession():
     if request.method == 'GET':
         return render_template('check_vsession.html')
     elif request.method == 'POST':
-        vsession = request.form.get('session', '')
-        info = pickle.loads(decrypt(base64.b64decode(vsession))) # 문자열을 바이트로 디코딩하고 이걸 역직렬화하여 원래 데이터로 변환.(이때 취약점 발생)
-        logging.debug(f"아이피 {request.remote_addr}가 check_session을 시도함. {info}")
-        return render_template('check_vsession.html', info=info)
+        try:
+            vsession = request.form.get('session', '')
+            info = pickle.loads(decrypt(base64.b64decode(vsession))) # 문자열을 바이트로 디코딩하고 이걸 역직렬화하여 원래 데이터로 변환.(이때 취약점 발생)
+            logging.debug(f"아이피 {request.remote_addr}가 check_session을 시도함. {info}")
+            res = make_response(render_template('check_vsession.html', info=info))
+            res.headers.set('X-AES-KEY', f"{AES_KEY}")
+            return res
+        except:
+            return "wrong"
     else:
         return "wrong"
 
