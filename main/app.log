@@ -25,3 +25,62 @@ INFO:werkzeug:172.18.0.1 - - [04/Aug/2024 18:34:07] "GET / HTTP/1.1" 200 -
 INFO:werkzeug:172.18.0.1 - - [04/Aug/2024 18:34:08] "GET /check_vsession HTTP/1.1" 200 -
 DEBUG:root:아이피 172.18.0.1가 check_session을 시도함. {'name': 'guest', 'userid': 'guest', 'password': 'guest'}
 INFO:werkzeug:172.18.0.1 - - [04/Aug/2024 18:34:09] "POST /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 17:58:03] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 17:58:03] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 17:58:06] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 17:58:42] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 17:59:11] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 17:59:12] "GET /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 17:59:13] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 17:59:13] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 17:59:14] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 17:59:15] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 17:59:16] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 17:59:16] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 17:59:17] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 17:59:17] "GET /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 17:59:18] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 17:59:29] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.18.0.2:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:01:04] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:01:05] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:01:07] "GET /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:01:08] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:01:08] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:01:09] "GET /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:01:10] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:01:10] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:01:11] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:01:11] "GET /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:01:30] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:01:31] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:01:37] "POST /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:01:42] "GET /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:01:43] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:01:44] "GET /check_vsession HTTP/1.1" 200 -
+DEBUG:root:아이피 172.18.0.1가 check_session을 시도함. {'name': 'guest', 'userid': 'guest', 'password': 'guest'}
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:01:46] "POST /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:03:58] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:04:16] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:05:39] "GET /create_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:05:39] "GET /check_vsession HTTP/1.1" 200 -
+INFO:werkzeug:172.18.0.1 - - [06/Aug/2024 18:05:40] "GET /create_vsession HTTP/1.1" 200 -
