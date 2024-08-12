@@ -5,13 +5,15 @@ import logging
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
 
-logging.basicConfig(filename="./app.log", level=logging.DEBUG) #logging
 app = Flask(__name__)
 app.secret_key = os.urandom(32) # AES key 생성
 AES_KEY = "36f6d9a966c4478c73af4fde2f813212"  # 256-bit key for AES
 
+logging.basicConfig(level=logging.INFO, 
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    handlers=[logging.StreamHandler()])
 
-FLAG = open('./flag.txt', 'r').read() # Flag is "./flag.txt" !!
+logger = logging.getLogger(__name__)
 
 
 INFO = ['name', 'userid', 'password']
@@ -53,7 +55,7 @@ def check_vsession():
         try:
             vsession = request.form.get('session', '')
             info = pickle.loads(decrypt(base64.b64decode(vsession))) # 문자열을 바이트로 디코딩하고 이걸 역직렬화하여 원래 데이터로 변환.(이때 취약점 발생)
-            logging.debug(f"아이피 {request.remote_addr}가 check_session을 시도함. {info}")
+            logger.info(f"아이피 {request.remote_addr}가 check_session을 시도함. {info}")
             res = make_response(render_template('check_vsession.html', info=info))
             res.headers.set('X-AES-KEY', f"{AES_KEY}")
             return res
